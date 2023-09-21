@@ -102,8 +102,7 @@ export class ExpressAdapter extends AbstractHttpAdapter<
       );
     }
     if (
-      response.getHeader('Content-Type') !== undefined &&
-      !response.getHeader('Content-Type').startsWith('application/json') &&
+      !response.getHeader('Content-Type')?.startsWith('application/json') &&
       body?.statusCode >= HttpStatus.BAD_REQUEST
     ) {
       this.logger.warn(
